@@ -1,11 +1,12 @@
 package com.andreamw96.movieappcleanarchitecture.main
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.andreamw96.core.domain.usecase.MovieUseCase
-import kotlinx.coroutines.flow.collect
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel @ViewModelInject constructor(movieUseCase: MovieUseCase) : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(movieUseCase: MovieUseCase) : ViewModel() {
     val movieList = movieUseCase.getAllMovies().asLiveData()
 }

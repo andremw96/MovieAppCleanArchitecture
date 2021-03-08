@@ -1,17 +1,16 @@
 package com.andreamw96.movieappcleanarchitecture.di
 
-import com.andreamw96.core.di.DatabaseModule
-import com.andreamw96.core.di.NetworkModule
-import com.andreamw96.core.di.RepositoryModule
+
+import com.andreamw96.core.domain.usecase.MovieInteractor
+import com.andreamw96.core.domain.usecase.MovieUseCase
+import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-/*
-@Module(includes = [
-    DatabaseModule::class,
-    NetworkModule::class,
-    RepositoryModule::class
-])
+@Module
 @InstallIn(SingletonComponent::class)
-object AppModule*/
+abstract class AppModule {
+    @Binds
+    abstract fun provideMovieUseCase(movieInteractor: MovieInteractor): MovieUseCase
+}
