@@ -13,7 +13,8 @@ object DataMapper {
                 it.overview,
                 it.releaseDate,
                 it.title,
-                it.voteAverage
+                it.voteAverage,
+                it.isFavorite
             )
         }
 
@@ -38,6 +39,6 @@ object DataMapper {
             releaseDate,
             title,
             voteAverage,
-            false
+            isFavorite
         )
 }

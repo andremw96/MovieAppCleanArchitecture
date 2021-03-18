@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andreamw96.core.data.Resource
 import com.andreamw96.movieappcleanarchitecture.databinding.ActivityMainBinding
+import com.andreamw96.movieappcleanarchitecture.detailmovie.DetailMovieActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,9 +48,8 @@ class MainActivity : AppCompatActivity() {
 
         movieAdapter.onItemMovieClick = { selectedMovie ->
             startActivity(
-                Intent(
-
-                )
+                Intent(this, DetailMovieActivity::class.java)
+                    .putExtra(DetailMovieActivity.EXTRA_DATA, selectedMovie)
             )
         }
     }

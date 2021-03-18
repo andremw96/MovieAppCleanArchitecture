@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.andreamw96.core.data.remote.IMAGE_BASE_URL
 import com.andreamw96.core.domain.model.Movie
 import com.andreamw96.movieappcleanarchitecture.R
 import com.andreamw96.movieappcleanarchitecture.databinding.RvMovieItemBinding
@@ -36,7 +37,7 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
         fun bind(movie: Movie) {
             with(binding) {
                 Glide.with(itemView.context)
-                    .load(movie.backdropPath)
+                    .load("$IMAGE_BASE_URL/${movie.backdropPath}")
                     .into(imgMovie)
                 txtMovieTitle.text = movie.title
                 txtDate.text = movie.releaseDate
