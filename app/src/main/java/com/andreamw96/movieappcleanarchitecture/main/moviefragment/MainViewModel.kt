@@ -1,4 +1,4 @@
-package com.andreamw96.movieappcleanarchitecture.main
+package com.andreamw96.movieappcleanarchitecture.main.moviefragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
