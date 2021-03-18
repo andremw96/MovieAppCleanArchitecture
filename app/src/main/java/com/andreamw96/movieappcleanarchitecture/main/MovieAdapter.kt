@@ -13,6 +13,8 @@ import com.bumptech.glide.Glide
 
 class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
 
+    var onItemMovieClick: ((Movie) -> Unit)? = null
+
     class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean = oldItem == newItem
 
@@ -39,6 +41,9 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
                 txtMovieTitle.text = movie.title
                 txtDate.text = movie.releaseDate
                 ratingBar.progress = movie.voteAverage.toInt()
+                rootItemMovie.setOnClickListener {
+                    onItemMovieClick?.invoke(currentList[adapterPosition])
+                }
             }
         }
     }
