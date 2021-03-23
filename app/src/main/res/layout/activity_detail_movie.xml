@@ -26,6 +26,7 @@
                 android:id="@+id/iv_detail_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/detail_image"
                 android:scaleType="centerCrop" />
 
             <androidx.appcompat.widget.Toolbar
@@ -46,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_not_favorite"
+        android:contentDescription="@string/fab_favorite"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end" />
 

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MovieAppCleanArchitecture</string>
     <string name="title_favorite">Favorite</string>
-    <string name="title_activity_home">MainActivity</string>
     <string name="title_home">Home</string>
+    <string name="detail_image">Detail Image</string>
+    <string name="fab_favorite">Floating action button favorite</string>
 </resources>
