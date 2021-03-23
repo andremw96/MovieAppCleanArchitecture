@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import com.andreamw96.movieappcleanarchitecture.R
 import com.andreamw96.movieappcleanarchitecture.databinding.ActivityHomeBinding
 import com.andreamw96.movieappcleanarchitecture.main.moviefragment.MainFragment
+import com.andreamw96.movieappcleanarchitecture.utils.FavoriteModuleUtils.installFavoriteModule
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
-import com.google.android.play.core.splitinstall.SplitInstallRequest
 
 class HomeActivity : AppCompatActivity() {
 
@@ -28,44 +26,11 @@ class HomeActivity : AppCompatActivity() {
             }
 
             R.id.navigation_favorite -> {
-                installFavoriteModule()
+                installFavoriteModule(this, this, binding.root)
                 return@OnNavigationItemSelectedListener true
             }
         }
         false
-    }
-
-    private fun installFavoriteModule() {
-        val splitInstallManager = SplitInstallManagerFactory.create(this)
-        val moduleFavorite = "favorite"
-        if (splitInstallManager.installedModules.contains(moduleFavorite)) {
-            showFavoriteFragment()
-        } else {
-            val request = SplitInstallRequest.newBuilder()
-                .addModule(moduleFavorite)
-                .build()
-            splitInstallManager.startInstall(request)
-                .addOnSuccessListener {
-                    showFavoriteFragment()
-                }
-                .addOnFailureListener {
-                    showSnackbarModuleNotInstalled()
-                }
-        }
-    }
-
-    private fun showFavoriteFragment() {
-        val favoriteFragment = Class.forName("com.andreamw96.favorite.FavoriteFragment").newInstance() as Fragment
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container_layout, favoriteFragment, favoriteFragment.javaClass.simpleName)
-            .commit()
-    }
-
-    private fun showSnackbarModuleNotInstalled() {
-        Snackbar.make(binding.container, "Module Favorite Not Installed", Snackbar.LENGTH_INDEFINITE)
-            .setAction("Retry") {
-                installFavoriteModule()
-            }.show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

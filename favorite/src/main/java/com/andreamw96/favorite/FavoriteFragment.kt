@@ -1,6 +1,7 @@
 package com.andreamw96.favorite
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andreamw96.favorite.databinding.FragmentFavoriteBinding
 import com.andreamw96.favorite.di.favoriteModule
+import com.andreamw96.movieappcleanarchitecture.detailmovie.DetailMovieActivity
 import com.andreamw96.movieappcleanarchitecture.main.MovieAdapter
 import org.koin.android.ext.android.inject
 import org.koin.core.context.loadKoinModules
@@ -41,6 +43,13 @@ class FavoriteFragment : Fragment() {
             binding.rvFavoriteMovie.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = favMovieAdapter
+            }
+
+            favMovieAdapter.onItemMovieClick = { selectedMovie ->
+                startActivity(
+                    Intent(activity, DetailMovieActivity::class.java)
+                        .putExtra(DetailMovieActivity.EXTRA_DATA, selectedMovie)
+                )
             }
 
             favoriteViewModel.favoriteMovieList.observe(viewLifecycleOwner, { data ->
