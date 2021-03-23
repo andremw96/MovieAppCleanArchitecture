@@ -3,14 +3,18 @@ package com.andreamw96.movieappcleanarchitecture.di
 
 import com.andreamw96.core.domain.usecase.MovieInteractor
 import com.andreamw96.core.domain.usecase.MovieUseCase
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import com.andreamw96.movieappcleanarchitecture.detailmovie.DetailMovieViewModel
+import com.andreamw96.movieappcleanarchitecture.main.moviefragment.MainViewModel
+import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class AppModule {
-    @Binds
-    abstract fun provideMovieUseCase(movieInteractor: MovieInteractor): MovieUseCase
+val useCaseModule = module {
+    factory<MovieUseCase> {
+        MovieInteractor(get())
+    }
+}
+
+val viewModelModule = module {
+    viewModel { MainViewModel(get()) }
+    viewModel { DetailMovieViewModel(get()) }
 }

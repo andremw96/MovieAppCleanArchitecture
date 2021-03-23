@@ -12,11 +12,8 @@ import com.andreamw96.core.utils.DataMapper.entityToDomain
 import com.andreamw96.core.utils.DataMapper.responseToEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class MovieRepository @Inject constructor(
+class MovieRepository constructor(
     private val remoteDataSource: MovieRemoteDataSource,
     private val localDataSource: MovieLocalDataSource,
     private val appExecutors: AppExecutors

@@ -1,6 +1,5 @@
 package com.andreamw96.core.data.remote
 
-import com.andreamw96.core.data.Resource
 import com.andreamw96.core.data.remote.network.ApiResponse
 import com.andreamw96.core.data.remote.network.MovieApi
 import com.andreamw96.core.data.remote.response.MovieResponse
@@ -8,12 +7,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import java.lang.Exception
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class MovieRemoteDataSource @Inject constructor(private val movieApi: MovieApi) {
+class MovieRemoteDataSource constructor(private val movieApi: MovieApi) {
     suspend fun getAllMovie(): Flow<ApiResponse<List<MovieResponse>>> {
         return flow {
             try {

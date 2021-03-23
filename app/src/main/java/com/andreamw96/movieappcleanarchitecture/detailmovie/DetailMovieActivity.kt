@@ -1,7 +1,6 @@
 package com.andreamw96.movieappcleanarchitecture.detailmovie
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.andreamw96.core.data.remote.IMAGE_BASE_URL
@@ -9,16 +8,15 @@ import com.andreamw96.core.domain.model.Movie
 import com.andreamw96.movieappcleanarchitecture.R
 import com.andreamw96.movieappcleanarchitecture.databinding.ActivityDetailMovieBinding
 import com.bumptech.glide.Glide
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.ext.android.inject
 
-@AndroidEntryPoint
 class DetailMovieActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_DATA = "extra_data"
     }
 
-    private val detailViewModel: DetailMovieViewModel by viewModels()
+    private val detailViewModel: DetailMovieViewModel by inject()
 
     private lateinit var binding: ActivityDetailMovieBinding
 

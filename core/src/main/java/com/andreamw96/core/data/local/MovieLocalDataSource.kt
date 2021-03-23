@@ -2,11 +2,8 @@ package com.andreamw96.core.data.local
 
 import com.andreamw96.core.data.local.entity.MovieEntity
 import com.andreamw96.core.data.local.room.MovieDao
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class MovieLocalDataSource @Inject constructor(private val movieDao: MovieDao) {
+class MovieLocalDataSource constructor(private val movieDao: MovieDao) {
     fun getAllMovie() = movieDao.getAllMovie()
 
     fun getAllFavorite() = movieDao.getFavoriteMovie()

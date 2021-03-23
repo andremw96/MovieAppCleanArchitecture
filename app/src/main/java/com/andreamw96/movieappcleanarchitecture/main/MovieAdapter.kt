@@ -1,4 +1,4 @@
-package com.andreamw96.movieappcleanarchitecture.main.moviefragment
+package com.andreamw96.movieappcleanarchitecture.main
 
 import android.view.LayoutInflater
 import android.view.View

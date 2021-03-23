@@ -7,17 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andreamw96.core.data.Resource
 import com.andreamw96.movieappcleanarchitecture.databinding.FragmentMainBinding
 import com.andreamw96.movieappcleanarchitecture.detailmovie.DetailMovieActivity
-import dagger.hilt.android.AndroidEntryPoint
+import com.andreamw96.movieappcleanarchitecture.main.MovieAdapter
+import org.koin.android.ext.android.inject
 
-@AndroidEntryPoint
 class MainFragment : Fragment() {
 
-    private val mainViewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by inject()
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
