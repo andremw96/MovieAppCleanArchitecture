@@ -20,14 +20,14 @@ object FavoriteModuleUtils {
         val splitInstallManager = SplitInstallManagerFactory.create(context)
         val moduleFavorite = "favorite"
         if (splitInstallManager.installedModules.contains(moduleFavorite)) {
-            showFavoriteFragment(context, activity, view)
+            showFavoriteFragment(activity)
         } else {
             val request = SplitInstallRequest.newBuilder()
                 .addModule(moduleFavorite)
                 .build()
             splitInstallManager.startInstall(request)
                 .addOnSuccessListener {
-                    showFavoriteFragment(context, activity, view)
+                    showFavoriteFragment(activity)
                 }
                 .addOnFailureListener {
                     showSnackbarModuleNotInstalled(context, activity, view)
@@ -35,7 +35,7 @@ object FavoriteModuleUtils {
         }
     }
 
-    private fun showFavoriteFragment(context: Context, activity: AppCompatActivity, view: View) {
+    private fun showFavoriteFragment(activity: AppCompatActivity) {
         val favoriteFragment = Class.forName("com.andreamw96.favorite.FavoriteFragment").newInstance() as Fragment
         activity.supportFragmentManager.beginTransaction()
             .replace(R.id.container_layout, favoriteFragment, favoriteFragment.javaClass.simpleName)
